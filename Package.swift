@@ -12,13 +12,7 @@ let package = Package(
         .visionOS(.v26),
     ],
     products: [
-        // MARK: - Sub-namespace
-        .library(
-            name: "Bit Format Primitives",
-            targets: ["Bit Format Primitives"]
-        ),
-
-        // MARK: - Umbrella
+        // MARK: - Library
         .library(
             name: "Bit Formatter Primitives",
             targets: ["Bit Formatter Primitives"]
@@ -35,24 +29,16 @@ let package = Package(
         .package(url: "https://github.com/swift-primitives/swift-formatter-primitives.git", branch: "main"),
     ],
     targets: [
-        // MARK: - Sub-namespace
+        // MARK: - Base-2 bit formatting
         //
-        // `Bit.Format` — the base-2 bit formatter. Renders the bits of a
+        // `Bit.Formatter` — the base-2 bit formatter. Renders the bits of a
         // `Bit.Pattern<Carrier>.Mask` as `'0'`/`'1'` glyphs (no radix engine),
         // honoring `Bit.Order` and emitting fixed-width output.
         .target(
-            name: "Bit Format Primitives",
+            name: "Bit Formatter Primitives",
             dependencies: [
                 .product(name: "Bit Pattern Primitives", package: "swift-bit-primitives"),
                 .product(name: "Formatter Primitives", package: "swift-formatter-primitives"),
-            ]
-        ),
-
-        // MARK: - Umbrella
-        .target(
-            name: "Bit Formatter Primitives",
-            dependencies: [
-                "Bit Format Primitives",
             ]
         ),
 

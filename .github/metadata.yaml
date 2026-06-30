@@ -1,0 +1,11 @@
+# .github/metadata.yaml
+description: "Bit-pattern formatter for Swift — renders the bits of a fixed-width carrier as a base-2 \"0\"/\"1\" string (\"10110010\"), honoring bit order and optional digit grouping. Foundation-free."
+topics:
+  - primitives
+  - bit
+  - formatter
+  - binary
+  - bit-pattern
+homepage: "https://swift-institute.org"
+readme:
+  family: E
