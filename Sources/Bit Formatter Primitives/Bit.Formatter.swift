@@ -65,9 +65,6 @@ extension Bit {
 // MARK: - Formatter.Protocol
 
 extension Bit.Formatter {
-    /// The value this formatter accepts: a bit pattern in the carrier ring.
-    public typealias Input = Bit.Pattern<Carrier>.Mask
-
     /// The value this formatter produces: the base-2 string.
     public typealias Output = String
 
@@ -83,14 +80,14 @@ extension Bit.Formatter {
     /// - Parameter value: The bit pattern to render.
     /// - Returns: The fixed-width base-2 representation.
     @inlinable
-    public func format(_ value: Input) -> String {
+    public func format(_ value: Bit.Pattern<Carrier>.Mask) -> String {
         let width = Carrier.bitWidth
         let bits = value.underlying
 
         var output = ""
         output.reserveCapacity(width + (group.map { width / $0 } ?? 0))
 
-        for step in 0..<width {
+        (0..<width).forEach { step in
             if let group, step != 0, step.isMultiple(of: group) {
                 output += separator
             }
